@@ -60,7 +60,7 @@ class StateAndBehaviourTest < Minitest::Spec
 
     describe '#year' do
       it 'returns @year attribute value' do
-        assert_getter(:color)
+        assert_getter(:year)
       end
     end
 
