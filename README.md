@@ -13,6 +13,7 @@ guard> all
 Topics  
 - Ruby Object Model  
 - Simple class with some state and behaviour  
+
 Let the tests guide you to the solution.
 Change files in lib/ directory according to specs.
 Create PR when all tests will pass and rubocop won't complain.
