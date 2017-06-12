@@ -1,0 +1,105 @@
+Index: lib/topics/state_and_behaviour.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- lib/topics/state_and_behaviour.rb	(date 1497217375000)
++++ lib/topics/state_and_behaviour.rb	(revision )
+@@ -1,40 +1,29 @@
+ # frozen_string_literal: true
+ 
+ # exercise state and behaviour
+-class Newspaper
+-  def every_day
+-    "Actual newspaper is publised every day"
++module StateAndBehaviour
++
+-  end
++end
++class Car
++  attr_accessor :year,:color,:model,:current_speed
++
++
++def initialize (car_attributes)
++  @year=car_attributes[:year] || 2015
++  @color=car_attributes[:color] || 'purple'
++  @model=car_attributes[:model] || 'skyline'
++  @current_speed = car_attributes[:current_speed] = 8
+-end
++  end
+-class Magazine
+-  def every_week
+-    "Fresh magazine is published every week"
++
++def speed_up (speed_is_raising)
++  @current_speed+=speed_is_raising
+-  end
++end
++
++def push_break (speed_decrease)
++  @current_speed-=speed_decrease
+ end
+-class Book
+-  def writer_under_inspiration
+-    "Readers are waiting for bestseller"
+-  end
+-end
+ 
+-module StateAndBehaviour
+-  class Print_Edition
+-    attr_reader :periodicity
+-    def initialize (periodicity)
+-      @periodicity =periodicity
++def self.default_car
++  Car.new(default_car)
+-    end
++end
+-    def periodicity
+-      case periodicity
+-        when Newspaper
+-          periodicity.every_day
+-        when Magazine
+-          periodicity.every_week
+-        when Book
+-          periodicity.writer_under_inspiration
+-      end
++end
+-      c = Print_Edition.new(Book.new)
+-      c.periodicity
+-    end
+-  end
+-end
+-
+Index: lib/topics/object_model.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- lib/topics/object_model.rb	(date 1497217375000)
++++ lib/topics/object_model.rb	(revision )
+@@ -2,5 +2,24 @@
+ 
+ # exercise object model
+ module ObjectModel
++  module Linux_Friendly
++    def fork_process
++      super
++    end
++
++  end
++
++  class Desktop
++    def fork_process
++      "Parent: allocate memory"
++    end
++    def mine_bitcoins
++      inspect
++    end
++  end
++
++  class Laptop < Desktop
++    prepend Linux_Friendly
++  end
+-  
++
+ end
